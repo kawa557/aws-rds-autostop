@@ -1,4 +1,4 @@
-# AWS Lambda EC2 and RDS Shutdown
+# AWS Lambda RDS Shutdown
 
 このプロジェクトは、AWSのLambda関数を使用して、タグ `[shutdown:true]` が付与されたRDSを毎日指定の時間に停止するためのCloudFormationテンプレートとPythonコードです。
 

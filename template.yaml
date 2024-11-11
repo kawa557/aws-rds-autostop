@@ -28,6 +28,7 @@ Resources:
                   - logs:PutLogEvents
                   - rds:DescribeDBInstances
                   - rds:StopDBInstance
+                  - rds:ListTagsForResource
                 Resource: "*"
 
   StopRDSFunction:
