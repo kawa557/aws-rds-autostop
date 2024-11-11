@@ -1,5 +1,9 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: CloudFormation template to create a Lambda functions that Aurora databases tagged with [shutdown:true] at 20:00 JST daily.
+
+Parameters:
+  ScheduleExpression:
+    Description: "cron for stop rds"
+    Type: String
 
 Resources:
   MyLambdaExecutionRole:
@@ -38,7 +42,7 @@ Resources:
   StopRDSRule:
     Type: AWS::Events::Rule
     Properties:
-      ScheduleExpression: 'cron(0 11 * * ? *)'  # JST 20:00 is UTC 11:00
+      ScheduleExpression: !Ref ScheduleExpression
       Targets:
         - Arn: !GetAtt StopRDSFunction.Arn
           Id: StopRDSFunctionTarget
