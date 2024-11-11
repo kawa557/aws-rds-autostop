@@ -7,7 +7,7 @@ logger.setLevel(logging.INFO)
 def handler(event, context):
     rds = boto3.client('rds')
 
-    # Stop Aurora databases
+    # Stop RDS
     db_instances = rds.describe_db_instances()
     for db_instance in db_instances['DBInstances']:
         db_instance_id = db_instance['DBInstanceIdentifier']
