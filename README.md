@@ -1,16 +1,17 @@
 # AWS Lambda RDS Shutdown
 
-このプロジェクトは、AWSのLambda関数を使用して、タグ `[shutdown:true]` が付与されたRDSを毎日指定の時間に停止するためのCloudFormationテンプレートとPythonコードです。
+このプロジェクトは、AWSのLambda関数を使用して、タグ `[shutdown:true]` が付与されたRDSを毎日指定の時間に停止するためのCloudFormationテンプレートとPythonコードです
 
 ## 構成
 
 - `template.yaml`
-  - CloudFormationテンプレート。Lambda機能、IAMロール、イベントルールを定義し、スケジュールに基づいてLambdaを定期実行します。
-  - ParametersのScheduleExpressionで指定したcron式に従ってRDSを停止します。
-    - cronで指定する時間はUTCです。
-    - 例えばJST20時を指定する場合は"cron(0 11 * * ? *)" となります。
+  - CloudFormationテンプレート。Lambda機能、IAMロール、イベントルールを定義し、スケジュールに基づいてLambdaを定期実行します
+  - ParametersのScheduleExpressionで指定したcron式に従ってRDSを停止します
+    - cronで指定する時間はUTCです
+    - 例えばJST20時を指定する場合は"cron(0 11 * * ? *)" となります
 - `rds_stop.py`
-  - タグ `[shutdown:true]` が付与されたAuroraデータベースの停止を行うLambda関数のPythonコード。
+  - タグ `[shutdown:true]` が付与されたAurora/RDSの停止を行うLambda関数のPythonコード
+  - クラスターの場合はインスタンスへのタグ付与は不要
 
 ## デプロイ手順
 
